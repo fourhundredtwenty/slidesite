@@ -1,2 +1,4 @@
 flask
 pynamodb
+markdown2
+pygments

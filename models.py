@@ -7,7 +7,7 @@ class QuestionResponseModel(Model):
         table_name = "question_responses"
 
     question_id = NumberAttribute(hash_key=True)
-    response = UnicodeAttribute(default=0)
+    response = UnicodeAttribute(null=True)
 
 
 if not QuestionResponseModel.exists():

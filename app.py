@@ -1,10 +1,11 @@
 import random
 
-from flask import Flask
+from flask import Flask, session
 from flask import render_template
 from flask import jsonify
 
 app = Flask(__name__)
+app.secret_key = "eyyyy lmao"
 
 from questions import questions
 
@@ -14,10 +15,11 @@ from models import QuestionResponseModel
 @app.route("/")
 @app.route("/<int:question_id>")
 def root(question_id=None):
-    if id:
-        question = random.choice(questions)
-    else:
+    if question_id is not None:
         question = questions[question_id]
+    else:
+        question = random.choice(questions)
+
     return render_template("app.html", question=question)
 
 
