@@ -1,15 +1,30 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <script>
+      var question = {{ question.__dict__|tojson }};
+    </script>
+{% endblock %}
+
 {% block content %}
 <div class="row">
   <div class="card col-md-8 offset-md-2" style="margin-top:1rem">
     <div class="card-body">
-      <h5 class="card-title">{{question.title}}</h5>
+      <div class="row">
+	<div class="col-md-1">
+	  <span id="user-response-badge" class="badge badge-info">{{question.response.response}}</span>
+	</div>
+	<div class="col-md-10">
+	  <h5 class="card-title">{{question.title}}</h5>
+	</div>
+      </div>
       <p class="card-text">{{question.content|safe}}</p>
-      <a href="#" class="btn btn-primary question-response">Liked it</a>
-      <a href="#" class="btn btn-warning question-response">wtf?</a>
-      <a href="#" class="btn btn-danger question-response">Hate it</a>
-      <a href="{{ url_for('respond', question_id=question.q_id, response=1)}}"></a>
+      <a href="#like" class="btn btn-outline-primary question-response">Liked it</a>
+      <a href="#wtf" class="btn btn-outline-warning question-response">wtf?</a>
+      <a href="#hate" class="btn btn-outline-danger question-response">Hate it</a>
+      <a href="/" class="btn btn-outline-dark">
+	<span class="oi oi-random"></span>
+      </a>
     </div>
   </div>
 </div>
