@@ -8,14 +8,17 @@
 
 {% block content %}
 <div class="row">
-  <div class="card col-md-8 offset-md-2" style="margin-top:1rem">
+  <div class="col-md-2">
+    <span class="badge badge-info">{{question.category}}</span>
+  </div>
+  <div class="shadow-sm card col-md-8" style="margin-top:1rem">
     <div class="card-body">
       <div class="row">
-	<div class="col-md-1">
-	  <span id="user-response-badge" class="badge badge-info">{{question.response.response}}</span>
-	</div>
-	<div class="col-md-10">
+	<div class="col-md-8">
 	  <h5 class="card-title">{{question.title}}</h5>
+	</div>
+	<div class="col-md-1 offset-md-2">
+	  <span id="user-response-badge" class="badge badge-info">{{question.response.response}}</span>
 	</div>
       </div>
       <p class="card-text">{{question.content|safe}}</p>
@@ -28,12 +31,12 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row" style="margin-bottom: 1rem;">
   <div class="col-md-8 offset-md-2" style="margin-top:1rem">
-    <a class="btn btn-info" data-toggle="collapse" href="#more-info" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">hints and solutions...</a>
+    <a class="btn btn-info" data-toggle="collapse" href="#more-info" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">extra details and things to try...</a>
   </div>
 </div>
-<div class="row">
+<div class="row" style="margin-bottom: 1rem">
   <div id="more-info" class="collapse card col-md-8 offset-md-2" style="margin-top:1rem">
     <div class="card-body">
       <ul class="list-group list-group-flush">
