@@ -1,7 +1,11 @@
-# slidesite
-
-TODO
-
-# Serve a blank page
-# Serve a single slide of only one challenge
-
+```
+git clone https://github.com/fourhundredtwenty/slidesite
+cd slidesite
+python3 app.py
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+```
