@@ -2,3 +2,4 @@ flask
 pynamodb
 markdown2
 pygments
+six
