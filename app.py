@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, "vendor/lib/python3.7/site-packages/")
+
 import random
 
 from flask import Flask, session
@@ -36,3 +39,6 @@ def respond(question_id, response):
     q_response.response = response
     q_response.save()
     return q_response.response
+
+if __name__ == '__main__':
+    app.run()
