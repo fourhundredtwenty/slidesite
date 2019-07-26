@@ -20,11 +20,12 @@ goals for this
 
 from . import foundations
 from . import working_with_files
-
+from . import code
 
 questions = []
 questions += foundations.questions
-questions += working_with_files
+questions += working_with_files.questions
+questions += code.questions
 
 keyfunc = lambda x: x.category
 questions = sorted(questions, key=keyfunc)

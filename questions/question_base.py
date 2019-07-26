@@ -24,7 +24,9 @@ class Question:
     # renders content to markdown
     @property
     def content(self):
-        return markdown2.markdown(self._content, extras=["fenced-code-blocks"])
+        return markdown2.markdown(
+            self._content, extras=["tables", "fenced-code-blocks"]
+        )
 
     @content.setter
     def content(self, content):
@@ -33,7 +35,7 @@ class Question:
     @property
     def answers(self):
         return [
-            markdown2.markdown(answer, extras=["fenced-code-blocks"])
+            markdown2.markdown(answer, extras=["tables", "fenced-code-blocks"])
             for answer in self._answers
         ]
 
