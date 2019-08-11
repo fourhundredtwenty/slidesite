@@ -1,6 +1,5 @@
 import markdown
 from mdx_gfm import GithubFlavoredMarkdownExtension
-import pynamodb
 
 
 class Question:
