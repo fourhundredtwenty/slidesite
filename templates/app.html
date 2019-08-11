@@ -17,17 +17,23 @@
 	<div class="col-md-8">
 	  <h5 class="card-title">{{question.title}}</h5>
 	</div>
-	<div class="col-md-1 offset-md-2">
-	  <span id="user-response-badge" class="badge badge-info">{{question.response.response}}</span>
-	</div>
       </div>
       <p class="card-text">{{question.content|safe}}</p>
-      <a href="#like" class="btn btn-outline-primary question-response">Liked it</a>
+      {% if prev_exists %}
+      <a href="/{{question.q_id - 1}}" class="btn btn-outline-dark">
+	<span class="oi oi-chevron-left"></span>
+      </a>
+      {% endif %}
+      <a href="#star" class="btn btn-outline-primary question-response"><span class="oi oi-star"></span></a>
       <a href="#wtf" class="btn btn-outline-warning question-response">wtf?</a>
-      <a href="#hate" class="btn btn-outline-danger question-response">Hate it</a>
       <a href="/" class="btn btn-outline-dark">
 	<span class="oi oi-random"></span>
       </a>
+      {% if next_exists %}
+      <a href="/{{question.q_id + 1}}" class="btn btn-outline-dark">
+	<span class="oi oi-chevron-right"></span>
+      </a>
+      {% endif %}
     </div>
   </div>
 </div>

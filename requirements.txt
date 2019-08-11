@@ -1,5 +1,5 @@
 flask
-pynamodb
-markdown2
+git+https://github.com/Zopieux/py-gfm.git
+markdown<3
 pygments
 six

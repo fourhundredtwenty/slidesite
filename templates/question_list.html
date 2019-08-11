@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head %}
+
+{% endblock %}
+
 {% block content %}
 {% for category, questions in questions_by_category.items() %}
 <div class="card shadow-sm" style="margin-top: 1rem">
@@ -8,9 +12,12 @@
     <h6 class="card-subtitle mb-2 text-muted">{{questions.0.subtitle}}</h6>
     <div class="row">
       <div class="col-md-8 offset-md-2" style="margin-top:1rem">
-        <ul>
+        <ul id="question-list" style="list-style-type: none">
           {% for question in questions %}
-          <a href="/{{question.q_id}}"><li>{{question.title}} <span class="badge badge-info">{{question.response.response}}</span></li></a>
+          <li data-question-id="{{question.q_id}}">
+            <span class="question-icon oi oi-eye" style="color: #ccc"></span>
+            <a href="/{{question.q_id}}"> {{question.title}}</a>
+          </li>
           {% endfor %}
         </ul>
       </div>
