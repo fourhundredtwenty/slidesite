@@ -1,6 +1,5 @@
-from models import QuestionResponseModel
-
-import markdown2
+import markdown
+from mdx_gfm import GithubFlavoredMarkdownExtension
 import pynamodb
 
 
@@ -11,22 +10,19 @@ class Question:
     category = 0
     _content = ""
 
-    # The response field stores the user's button-click in a database
-    @property
-    def response(self):
-        try:
-            return QuestionResponseModel.get(self.q_id)
-        except QuestionResponseModel.DoesNotExist:
-            qr = QuestionResponseModel(self.q_id)
-            qr.save()
-            return self.response
+    def render_m(self, raw_md):
+        rendered_html = markdown.markdown(
+            raw_md,
+            extensions=["codehilite", "sane_lists", GithubFlavoredMarkdownExtension()],
+        )
+        print(raw_md)
+        print(rendered_html)
+        return rendered_html
 
     # renders content to markdown
     @property
     def content(self):
-        return markdown2.markdown(
-            self._content, extras=["tables", "fenced-code-blocks"]
-        )
+        return self.render_m(self._content)
 
     @content.setter
     def content(self, content):
@@ -34,10 +30,7 @@ class Question:
 
     @property
     def answers(self):
-        return [
-            markdown2.markdown(answer, extras=["tables", "fenced-code-blocks"])
-            for answer in self._answers
-        ]
+        return [self.render_m(answer) for answer in self._answers]
 
     @answers.setter
     def answers(self, answers):
