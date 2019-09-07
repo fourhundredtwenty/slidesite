@@ -1,14 +1,15 @@
 VENV_DIR=./venv
 PIP=$(VENV_DIR)/bin/pip
 PYTHON=$(VENV_DIR)/bin/python
+
 PYTHON3_OK := $(shell python3 --version 2>&1)
 
 run: check_env
 	$(VENV_DIR)/bin/python app.py
 
-init: venv pip_install
-
 check_env: python3 venv_works
+
+init: $(VENV_DIR) pip_install
 
 venv_works: $(VENV_DIR) $(PYTHON)
 
@@ -26,4 +27,4 @@ pip_install: $(VENV_DIR)
 clean:
 	rm -rf $(VENV_DIR)
 
-.PHONY: init python3
+.PHONY: run check_env init python3
