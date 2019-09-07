@@ -1,8 +1,10 @@
+# good-at.computer
+
 ## `type this in:`
 ```
 $ git clone https://github.com/fourhundredtwenty/slidesite
 $ cd slidesite
-$ python3 app.py
+$ make
 ```
 ## `get this out:`
 ```
